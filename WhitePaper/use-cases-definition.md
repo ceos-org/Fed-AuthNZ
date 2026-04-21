@@ -40,29 +40,62 @@ DestinE has two federated solutions in place:
 [DestinE Platform Onboarding Policy and Process v2.6](https://platform.destine.eu/wp-content/uploads/2024/11/DEST-SRCO-PR-2300339-Onboarding-Policy-and-Process-v2.6.pdf)
 
 ## Bilateral ESA-DLR Demonstrator
-<mark>Note</mark> _[UR]: will be added shortly._
 The bilateral ESA-DLR Demonstrator activity focuses on use cases regarding _Federated Discovery_ and _Federated Access_:
-- _Federated Discovery_ refers to ...
-- _Federated Access_ refers to ...
+- _Federated Discovery_ refers to the ability to search for and discover data across several repositories hosted by different organizations in a unified way;
+- _Federated Access_ refers to the ability to retrieve data using the digital identity (credentials) of the home organization no matter what organization participating in the identity federation is hosting the data.
 
-The aim is ...
+The aim is to showcase the benefits of federating ressources on the data, service and identity level.
 
-The following use cases are considered:
-- ...
-- ...
-- ...
+To support the use cases described below, and due to the character as a technical demonstration, free and open datasets (without restricting licences) are used to serve as examples for both free and open as well as restricted data. For user accounts virtual user identities are used.
+For real world federated discovery / federated access applications, legal, data protection, licence and IT security aspects must be considered which have been excluded in this Demonstrator activity.
 
+The following use cases (UC) are considered:
+- UC1: A user can access a client and discover _free and open_ data from online repositories hosted by different organizations and can download a granule from the data set.
+- UC2: A user can access a client and discover _restrained_ data from online repositories hosted by different organizations and can authenticate with the digital identity of the home organization in order to download a granule from a restrained data set.
+- UC3: A user can access a client and discover data (_free and open_ or _restrained_) data located in near-line/offline repositories (archived data) hosted by different organizations and can download a granule (deferred access).
+- UC4: A data manager can access a client and obtain information about data hosted in online, near-line, and offline repositories of different organizations and decide whether to remove data in own repository or whether to copy data across from external repository. ​
+- UC5: A user can access a collaborative platform and discover, visualize, and process data hosted by different repositories (online, near-line, offline).
+- UC6: Any federated organisation interested in collecting metrics about requests originated from external organization.​
+
+Some example data from free and open datasets have been selected to be hosted in repositories on both ESA and DLR side. This example data is also made available and discoverable in ESA and DLR STAC catalogues (see picture below).
+
+<mark>Note</mark> _[UR]_ to be inserted: simplified graphic depicting the DLR and ESA STAC catalogues (similar to slide 7 of the Bilateral PPT)
+
+On ESA and DLR side an Identity and Access Management (IAM) system manages digital identities (accounts) of ESA and DLR users, respectively.
+Both IAM act as Service Provider for the ESA / DLR service that hosts the restrained datasets (the ESA IAM protects the ESA repository, the ESA IAM protects the DLR repository).
+As Identity Providers, both ESA and DLR IAM are configured to form a ESA/DLR Demonstrator Identity Federation.
+
+<mark>Note</mark> _[UR]_ to be inserted: simplified graphic depicting the DLR and ESA demonstrator components (similar to slide 18 of the Bilateral PPT)
+
+This allows ESA users to use their ESA accounts to access data hosted in the DLR repository (and vice versa):
+- an ESA user finds restrained data of interest hosted in the DLR repository using the federated discovery functionality
+- when accessing the restrained data the user is asked to login
+- instead of logging in with a local DLR account (stored in the DLR IAM) an option to login with ESA credentials is offered
+- the ESA user clicks "Login with ESA account", is forwarded to the ESA IAM where the existing login session of the ESA user is detected
+- the ESA IAM generates an authentication token and submits it to the DLR IAM
+- the DLR IAM trusts the ESA IAM authentication token, generates a local authentication token and submits it to the DLR repository
+- the DLR repository detects that the ESA user is authenticated, checks the authorization information contained in the token, and if authorized provides access to the restrained data.
 
 ## eduGAIN
-<mark>Note</mark> _[UR]: will be added shortly._
 ### Overview
-...
+eduGAIN is a global meta-federation that interconnects national research and education identity federations worldwide. It enables students and researchers to access international digital services using their home institution credentials through single sign-on. By establishing a common trust framework and technical standards, the system ensures secure interoperability between participating organizations across different countries. This infrastructure eliminates the need for separate accounts, significantly simplifying collaboration for the global academic community. Operated by GÉANT, the platform empowers international research cooperation by standardizing identity management and facilitating seamless access to shared resources.
+
+### Participation
+Participation in eduGAIN is possible both as Service Provider (SP) or Identity Provider (IdP), but not directly. As a meta-federation, eduGAIN is a federation of national identity federations (e.g. _Canadian Access Federation_ (Canada), _Canadian Access Federation_ (France), _IDEM_ (Italy) or DFN-AAI (Germany); for a list of participating national federations see https://reporting.edugain.org/federation_list.php).
+
+#### Participation as Service Provider
+To participate as a Service Provider, your organization cannot join eduGAIN directly but must instead register through your national research and education federation. Begin by contacting your national federation's support team to initiate the onboarding process for your specific service. You must configure your service to meet technical requirements, typically involving SAML 2.0 compliance and specific attribute release policies. Your national federation will validate your service against their policies before including it in their local metadata. Once validated, your service metadata is aggregated into the global eduGAIN metadata feed, making it visible to users worldwide. This setup allows international researchers to access your service seamlessly using their home institution credentials.
+
+#### Participation as Identity Provider
+To participate as an Identity Provider, your organization must first join your national or regional research and education federation, as direct membership in eduGAIN is not available. Contact your national federation's support team to register your identity system and agree to their participation policies. You will need to ensure your technical infrastructure complies with SAML standards and eduGAIN's attribute release requirements. Once your national federation validates your configuration and legal agreements, they will publish your metadata to the eduGAIN meta-federation. This process enables users from other participating countries to authenticate using your institution's credentials. Ultimately, this expands your institution's reach by allowing global researchers to access your resources securely.
 
 ### AARC Blueprint Architecture
-...
+The AARC Blueprint Architecture establishes a comprehensive reference model for identity and access management within the research and education sector. It defines the technical and policy standards necessary to achieve seamless interoperability between distinct identity federations. Serving as the foundation for eduGAIN, this blueprint ensures that participating national federations can trust and exchange identity data securely across borders. The architecture specifies critical protocols and attribute release policies that govern how users authenticate and access remote services. This standardization allows researchers to maintain a consistent digital identity regardless of their specific location or institution. Consequently, the AARC Blueprint acts as the essential technical backbone that sustains the global connectivity and trust model of eduGAIN.
+
+The AARC Blueprint Architecture also serves as a rich source of Information, Guidelines and Best Practices on all levels of technical, organisational, legal (as far as possible) and security matters around identity federation topics.
 
 ### References
-...
+<mark>Note</mark> _[UR]: will be converted to bibtex references_
 [Reference 1](https://)
 [eduGAIN Hompage](https://edugain.org/)
 [AARC Blueprint Architecture](https://aarc-community.org/))
@@ -162,7 +195,7 @@ Japan is actively advancing the practical adoption of Verifiable Credentials (VC
 |     ESA/NASA MAAP     |     |  |    |   Cross-platform data retrieval, analysis, processor deployment and execution. Federated IdPs.  |   |
 |NASA Use CASE (WGISS-59)  |      |     |     |     |   |
 |   DestinE  |   |    |    |  Federated IdP, Federated services.  |   |
-|   Bilateral ESA-DLR  |   |    |    |    |   |
-|   eduGAIN  | applied AARC Blueprint Architecture | _what to insert here?_ | _what to insert here?_ | International Meta-Federation of national Identity Federations |   |
+|   Bilateral ESA-DLR  |  identity federation | yes | yes |    | Demonstrator for federated discovery / federated access use cases |
+|   eduGAIN  | applied AARC Blueprint Architecture | yes | yes | International Meta-Federation of national Identity Federations |   |
 |   SSI Decentralised  |   |    |    |    |   |
 
